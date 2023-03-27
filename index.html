@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function sumRange(n) {
+            let sum = 0;
+            for(let i = 0; i <= n; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+
+        function sumRangeRecursive(n) {
+            if (n <= 0) {
+                return n;
+            }   
+            return n + sumRangeRecursive(n - 1);
+            
+        }
+
+
+        function power(n, p) {
+            let total = 1;
+
+            for(let i = 1; i <= p; i++) {
+                total *= n;
+            }
+            return total;
+        }
+
+
+        function powerRecursive(n, p) {
+            if (p <= 0) {
+                return 1;
+            }
+            return n * powerRecursive(n, p - 1);
+        }
+
+        function factorial(n) {
+            let total = 1;
+            
+            for (let i = 1; i <= n; i++) {
+                total *= i;
+            }
+            return total;
+        }
+
+        function factorialRecursive(n) {
+            if (n <= 0) {
+                return 1;
+            }
+            return n * factorialRecursive(n - 1);
+        }
+
+        function arrayProduct(arr) {
+            let total = 1;
+            arr.forEach(element => {
+                total *= element;
+            })
+            return total;
+        }
+
+        function arrayProductRecursive(arr) {
+            if (arr.length == 0 ) {
+                return 1;
+            }
+            return arr.shift() * arrayProductRecursive(arr);
+        }
+
+        function fibs(n) {
+            let arr = [];
+            let x = 0;
+            let y = 1;
+            let sum = x + y;
+            arr.push(x);
+            arr.push(y);
+            arr.push(sum);
+            for (let i = 0; i < n-3; i++) {
+                x = sum;
+                sum = x + y;
+                y = x;
+                arr.push(sum);
+            }
+            console.log(arr);
+        }
+
+        
+        function fibsRecursive(n) {
+            if (n == 0) {
+                return [0];
+            }
+            if (n == 1) {
+                return [0, 1];
+            }
+            let arr = fibsRecursive(n - 1);
+            console.log(n);
+            arr.push(arr[n-1] + arr[n-2]);
+
+            return arr;
+        }
+
+        // [6, 2, 15, 8]
+
+        function mergeSort(arr) {
+            if (arr.length == 0) {
+                return "Empty array";
+            }
+            if (arr.length === 1) {
+                return arr;
+            }
+
+
+            let mid = Math.floor(arr.length / 2);
+            let leftHalf = arr.slice(0, mid);
+            let rightHalf = arr.slice(mid, arr.length);
+
+
+            leftHalf = mergeSort(leftHalf);
+            rightHalf = mergeSort(rightHalf);
+
+            return merge(leftHalf, rightHalf);
+            
+        }
+
+        function merge(leftHalf, rightHalf) {
+            
+            let sortedArray = [];
+            
+            while (leftHalf.length > 0 && rightHalf.length > 0) {
+                if (leftHalf[0] < rightHalf[0]) {
+                    sortedArray.push(leftHalf[0]); 
+                    leftHalf.shift();
+                }
+
+                else {
+                    sortedArray.push(rightHalf[0]);
+                    rightHalf.shift();
+                }
+                console.log(sortedArray);
+            }
+
+            while (leftHalf.length > 0) {
+                sortedArray.push(leftHalf[0]);
+                leftHalf.shift();
+            }
+
+            while (rightHalf.length > 0) {
+                sortedArray.push(rightHalf[0]);
+                rightHalf.shift();
+            }
+            return sortedArray;
+        }
+
+
+    </script>
+</body>
+</html>

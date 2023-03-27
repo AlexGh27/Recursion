@@ -1,1 +1,1 @@
-# Recursion
+This repo includes recursion exercises, last one being the merge sort.
